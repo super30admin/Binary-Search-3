@@ -1,0 +1,30 @@
+//Time Complexity: O(log N+K)
+//Space Complexity: O(1)
+//Accepted in LeetCode: Yes
+
+//Approach:
+//1. Perform binary search to find element(if present)
+//2. Find relative positions of other elements near this element(upto k elements)
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+         int l = 0, r = arr.length - 1;
+        while(l <= r) {
+            int mid = l + (r - l) / 2;
+            if(arr[mid] >= x) r = mid - 1;
+            else l = mid + 1;
+        }
+        int cur = l;
+        l = (arr[cur] > x) ? cur - 1 : cur;
+        r = (l == cur) ? cur + 1 : cur;
+        List<Integer> res = new LinkedList<>();
+        while(k > 0) {
+            if((l >= 0 && r < arr.length && Math.abs(arr[l] - x) <= Math.abs(arr[r] - x)) 
+               || r > arr.length - 1)
+                res.add(0, arr[l--]);
+            else res.add(arr[r++]);
+            k--;
+        }
+        return res;
+    }
+}

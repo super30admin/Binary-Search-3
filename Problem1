@@ -1,0 +1,21 @@
+//Time Complexity: O(log n)
+//Space Complexity: O(1)
+//Accepted in LeetCode: Yes
+
+//Approach: 
+//Base cases: (i)Pow =0, return 1
+//(ii)Pow<0, take reciprocal of the number and negate the power
+//(iii)Pow==2, multiply the number by itself
+//(iv) if power is even, call the pow function recursively for n/2 and multiply that result with itself
+//(v) power is odd, call the pow function recursively for n/2 and multiply that result with itself and the number(x)
+
+
+class Solution {
+    public double myPow(double x, int n) {
+    if(n<0) return 1/x * myPow(1/x, -(n+1));
+    if(n==0) return 1;
+    if(n==2) return x*x;
+    if(n%2==0) return myPow( myPow(x, n/2), 2);
+    else return x*myPow( myPow(x, n/2), 2);
+    }
+}
