@@ -1,19 +1,44 @@
-// Time Complexity :O(N)  
-// Space Complexity :O(1)
+
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class kClosestElements {
+// Time Complexity :O(N)  
+// Space Complexity :O(1)
+// Your code here along with comments explaining your approach
+// 1. Use two pointers one at start of array and other at end.
+// 2. Till differnece between indexes of high and low pointers is less than k , check absolute differneces of(x-arr[l]) and
+//  (x-arr[h]) and adjust low and high pointers accordingly. Now iterate array from low to high pointer and add to list and return it.
+     
+        
+        public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int l = 0;
+        int h = arr.length-1;
+        List<Integer> result = new ArrayList<>();
+        if(arr.length == 1) {
+            result.add(arr[0]);
+            return result;
+            }
+        while(h-l>=k ){
+            if(Math.abs(x-arr[l])>Math.abs(x-arr[h]))   l++;
+            else h--;
+        }
+        for(int i = l;i<=h;i++)
+            result.add(arr[i]);
+        return result;
+        }
+// Time Complexity :O(N log N)          
+// Space Complexity :O(1)
 // Your code here along with comments explaining your approach
 // 1 . Find index where given number is present in array or find its closest element and initialize left and right positions as left and right of this index.
 // 2. Now , since array is sorted , first add left element then right element till array is in bounds and number of neighbours less than k and
 //    increment both pointers. 
 // 3. Now , if left or right positions out of bounds add opposite pointer elements and increment pointer till number of closest elements is k.
-import java.util.ArrayList;
-import java.util.List;
-
-public class kClosestElements {
-
-        public static List<Integer> findClosestElements(int[] arr, int k, int x) {
+        public static List<Integer> findClosestElements2(int[] arr, int k, int x) {
             int position = findindex(arr,x,0,arr.length-1);
             List<Integer> result = new ArrayList<>();
             int count = 0;
