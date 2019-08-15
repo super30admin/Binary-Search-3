@@ -8,22 +8,25 @@
 // 2. If power is even then find power(x,n/2) and multiply it with it again to get power(x,n). Do this till n reaches 1 and folow step 1.
 // 3. If power is odd then find power(x,n/2),multiply this with itself and with x to get power(x,n).Do this till n reaches 1 and folow step 1.
 // 4. If n is negative then we need to find(1/xˆn) so we can call power(1/x,-n) and follow steps 1,2,3.
-public double myPow(double x, int n) {
+class Solution {
+    public double myPow(double x, int n) {
         if(x == 0)  return 0;
         if(n == 0)  return 1;
-        double y=x;
-        if(n>=0){
-            while(n>1){
-                y*=x;
-                n--;
-            }
+        if(n>=0)    return powered(x,n);
+        return powered(1/x,-n);
+            
+        
+    }
+    public double powered(double x,int n){
+        if(n==0)    return 1;
+        if(n==1)    return x;
+        if(n%2==0) {
+            double y = powered(x,n/2);
+            return y*y;
         }
         else{
-            y = 1/y;
-            while(n<-1){
-                y = y*(1/x);
-                n++;
-            }
+            double y = powered(x,n/2);
+            return y*y*x;
         }
-        return y;
     }
+}
