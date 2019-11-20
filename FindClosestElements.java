@@ -2,7 +2,7 @@
 //Space Complexity :O(1)
 //Did this code successfully run on Leetcode :yes
 //Any problem you faced while coding this :Nope
-We can make the time complexity to O(Log(N)+K) by using binary search. tried that one but unable to terminate the condition whether to go left or right.
+I think We can make the time complexity to O(Log(N)+K) by using binary search. tried that one but unable to terminate the condition whether to go left or right.
 
 //Your code here along with comments explaining your approach
 class Solution {
