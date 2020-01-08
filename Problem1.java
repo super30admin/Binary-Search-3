@@ -14,9 +14,9 @@ class Solution {
         }
         else{                           // if n is even then mutiply result from n/2 * result from n/2 * x
             if(n < 0)   
-                return temp * temp * 1/x;   
+                return temp * temp * 1/x;   // if n is less than 0 then reciprocal of x should be multiplied
             else 
-                return temp * temp * x;
+                return temp * temp * x;        // otherwise x should be multiplied with temp in case of odd n
         }
     }    
 }
