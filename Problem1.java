@@ -6,15 +6,15 @@
 class Solution {
     public double myPow(double x, int n) {
         // Base Case
-        if(n ==0)   return 1.0;
+        if(n ==0)   return 1.0;         // When x^0 = 1.0
         // Logic
-        double temp = myPow(x, n/2);
+        double temp = myPow(x, n/2);    // Recursively calculate for n/2 
         if(n %2 == 0){
-            return temp * temp;    
+            return temp * temp;    // if n is even then mutiply result from n/2 * result from n/2
         }
-        else{
+        else{                           // if n is even then mutiply result from n/2 * result from n/2 * x
             if(n < 0)   
-                return temp * temp * 1/x;
+                return temp * temp * 1/x;   
             else 
                 return temp * temp * x;
         }
