@@ -1,3 +1,7 @@
+// Time Complexity - O(logn)
+// Space Complexity - O(1)
+// This solution worked on LeetCode
+
 
 class Solution {
     public double myPow(double x, int n) {
