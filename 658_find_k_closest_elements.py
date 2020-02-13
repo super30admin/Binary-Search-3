@@ -71,3 +71,5 @@ class Solution:
 if __name__ == '__main__':
     Solution().findClosestElements_BinarySearch([1, 2, 3, 4, 5], 4, 3)
     Solution().findClosestElements([1, 2, 3, 4, 5], 4, 3)
+    print(Solution().findClosestElements_BinarySearch([2, 5, 9, 11, 14, 19, 21, 22, 27], 3, 15))
+    print(Solution().findClosestElements([2, 5, 9, 11, 14, 19, 21, 22, 27], 3, 15))
