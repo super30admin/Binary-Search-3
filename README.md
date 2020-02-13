@@ -46,7 +46,7 @@ Optimize Air Routes (https://leetcode.com/discuss/interview-question/318918/amaz
 
 INPUT
 The input to the function/method consisits of three arguments:
-maxTravelDist, an integer representing the maximum operating travel distance of the given aircraft;
+maxTravelDist, an integer representing the maximum operating travuel distance of the given aircraft;
 forwardRouteList, a list of pairs of integers where the first integer represents the unique identifier of a forward shipping
 route and the second integer represents the amount of travel distance required bu this shipping route;
 returnRouteList, a list of pairs of integers where the first integer represents the unique identifer of a return shipping route
