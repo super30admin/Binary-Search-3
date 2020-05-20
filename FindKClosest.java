@@ -1,4 +1,4 @@
-// Time Complexity :  O(k)
+// Time Complexity :  O(n)
 // Space Complexity : O(1) since it is iterative binary search.
 // Did this code successfully run on Leetcode : Yes Its working
 // Any problem you faced while coding this : No
