@@ -1,0 +1,12 @@
+Approach 1 :
+Time Complexity : O(logn)
+Space Complexity: O(1)
+class Solution:
+    def myPow(self, x, n):
+        if n == 0: return 1
+        if n < 0: return 1.0 / self.myPow(x, -n)
+        temp = self.myPow(x, n // 2)
+        if n % 2 == 0: ## Even Case
+            return temp * temp
+        else: ## odd Case
+            return temp * temp * x
