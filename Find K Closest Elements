@@ -18,7 +18,26 @@ class Solution:
             else:
                 high = mid
         return arr[low:low + k]
- Approach 2 : 
- Time Complexity :
- Space Complexity:
+ Approach 2 : Max Heap , So the farthest elements can be popped and nearest elements will be in the stack .
+ Time Complexity : nlogk+klogk ---> nlogk. (After popping elements from heap we still need to sort)
+ Space Complexity: 
+ 
+ Approach 3 ; two pointer Approach
+ Time Complexity : O(n-k)+ O(k) (Take the k elements and return) ---> O(N) --- Linear
+ Space Complexity :O(1)
+ class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        self.res=[]
+        ## Edge Case
+        if len(arr)==0 or arr is None:
+            return self.res
+        low,high=0,len(arr)-1
+        while(high-low+1>k): ## Just Make a window
+            if abs(x-arr[low])>abs(x-arr[high]):
+                low+=1
+            else:
+                high-=1
+        return arr[low:low+k]
+ 
+ 
  
