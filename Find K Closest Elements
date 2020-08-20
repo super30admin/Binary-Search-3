@@ -18,3 +18,7 @@ class Solution:
             else:
                 high = mid
         return arr[low:low + k]
+ Approach 2 : 
+ Time Complexity :
+ Space Complexity:
+ 
