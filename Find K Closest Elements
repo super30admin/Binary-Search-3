@@ -1,5 +1,5 @@
 Approach 1 : Two Pointers with binary Search
-Time Complexity: O(logn+k)=O(logn)
+Time Complexity: O(log(n-k)+k)=O(logn)
 Space Complexity: O(K)
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
@@ -7,17 +7,17 @@ class Solution:
         ## Edge Case
         if len(arr)==0 or arr is None:
             return self.res
-        low=0
-        high=len(arr)-k
-        while low<high:
-            mid=(low+high)//2
+        left=0
+        right=len(arr)-k
+        while left<right:
+            mid=(left+right)//2
             if abs(x - arr[mid]) > abs(arr[mid + k] - x):
-                low = mid + 1
+                left = mid + 1
             elif arr[mid] == arr[mid+k]:
-                low = mid + 1
+                left = mid + 1
             else:
-                high = mid
-        return arr[low:low + k]
+                right = mid
+        return arr[left:left + k]
  Approach 2 : Max Heap , So the farthest elements can be popped and nearest elements will be in the stack .
  Time Complexity : nlogk+klogk ---> nlogk. (After popping elements from heap we still need to sort)
  Space Complexity: 
