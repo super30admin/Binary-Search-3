@@ -12,8 +12,8 @@ import java.lang.Comparable;
 // Your code here along with comments explaining your approach
 // Approach 1: Using Max Heap
 // Time Complexity : O(nlogk + klogk)
-// Space Complexity :O(k)
-class Solution {
+// Space Complexity : O(k)
+class Problem2S1 {
 
     // class definiton of Pair
     class Pair implements Comparable<Pair>{
@@ -93,6 +93,8 @@ class Solution {
 // Time Complexity : O(n-k+k) = O(n)
 //      n: number of elements
 //      k: k closest elements
+//   For iterating best position for low to correct position -> n-k
+//   For add low to k elements to result -> k
 // Space Complexity : O(1)
 class Problem2S2 {
 
@@ -132,7 +134,7 @@ class Problem2S2 {
 // Your code here along with comments explaining your approach
 // Approach 3: Using Binary Search(find closest element)
 // 1. We are trying to set low to its right position
-// Time Complexity :O(log n +k)
+// Time Complexity :O((log n) + k)
 //      n: number of elements
 //      k: k closest elements
 // Space Complexity : O(1)
