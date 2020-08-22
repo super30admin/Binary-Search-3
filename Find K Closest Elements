@@ -1,0 +1,43 @@
+Approach 1 : Two Pointers with binary Search
+Time Complexity: O(log(n-k)+k)=O(logn)
+Space Complexity: O(K)
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        self.res=[]
+        ## Edge Case
+        if len(arr)==0 or arr is None:
+            return self.res
+        left=0
+        right=len(arr)-k
+        while left<right:
+            mid=(left+right)//2
+            if abs(x - arr[mid]) > abs(arr[mid + k] - x):
+                left = mid + 1
+            elif arr[mid] == arr[mid+k]:
+                left = mid + 1
+            else:
+                right = mid
+        return arr[left:left + k]
+ Approach 2 : Max Heap , So the farthest elements can be popped and nearest elements will be in the stack .
+ Time Complexity : nlogk+klogk ---> nlogk. (After popping elements from heap we still need to sort)
+ Space Complexity: 
+ 
+ Approach 3 ; two pointer Approach
+ Time Complexity : O(n-k)+ O(k) (Take the k elements and return) ---> O(N) --- Linear
+ Space Complexity :O(1)
+ class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        self.res=[]
+        ## Edge Case
+        if len(arr)==0 or arr is None:
+            return self.res
+        low,high=0,len(arr)-1
+        while(high-low+1>k): ## Just Make a window
+            if abs(x-arr[low])>abs(x-arr[high]):
+                low+=1
+            else:
+                high-=1
+        return arr[low:low+k]
+ 
+ 
+ 
