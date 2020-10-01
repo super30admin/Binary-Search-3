@@ -1,0 +1,44 @@
+/*
+Approach:
+- recursively calling n/2 until base case
+- if n is even - multiple twice
+- if n is odd - multipley twice & with x itself
+    - handle negative values (positive values multiply only x, negative values 1/x)
+2^10 = 2^5 * 2^5
+2^5 = 2^2 * 2^2 * 2
+2^2 = 2^2 * 2^1
+2^1 = 1
+
+negative values = 
+2^-10 = 2^-5 * 2^-5
+2^-5 = 2^-2 * 2^-2 * 2
+2^-2 = 2^-2 * 2^-1
+2^-1 = 1/2 
+
+Time: 
+O(log N) as we are diving into two and processing each time
+Space: recursive stack - O(N)
+
+*/
+
+class Solution {
+    public double myPow(double x, int n) {
+         
+        //base case
+        if( n == 0){
+            return 1;
+        }
+        
+        double recurrval = myPow(x, n/2);
+
+        if(n % 2 == 0){
+            return recurrval * recurrval;
+        } else{
+            if(n > 0){
+                return (recurrval * recurrval * x);
+            } else {
+                return (recurrval * recurrval * 1/x);
+            }
+        }
+    }
+}
