@@ -17,7 +17,7 @@ negative values =
 
 Time: 
 O(log N) as we are diving into two and processing each time
-Space: recursive stack - O(N)
+Space: recursive stack - O(Log N)
 
 */
 
