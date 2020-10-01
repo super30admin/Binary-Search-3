@@ -10,7 +10,16 @@
         # Optimized approach: 
                               
             # 1. 
-                    A) 
+                    A) With binary search, left will be at left side and right will be at arr.length-k position
+                    B) n while loop, first we will calculate mid and thne check for left_bound and right_bound
+                    C) we will use value of left and right bound to move left and right pointers
+                    D) if left_bound is greater then make left  to mid+1 that means these elements are far aways from x
+                    E) else go to right_bound. There will be one corner case for this that w e need to check.
+                            if(arr[mid]==arr[mid+k]) then we need to move our left to mid+1
+                            else right = mid;
+                    F) At the end, we are the starting point from which we need to return k element.
+                    E) Create a list and add k elements from left position to it.
+                    F_ At the end, return  the list.
     */  
 
 class Solution {
