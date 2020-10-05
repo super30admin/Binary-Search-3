@@ -1,5 +1,5 @@
     /*  Explanation
-    # Leetcode problem link : https://leetcode.com/discuss/interview-question/341818/Google-or-Onsite-or-Skip-Iterator
+    # Leetcode problem link : https://leetcode.com/discuss/interview-question/373202
     Time Complexity for operators : o(nlogn) .. n is the length of the string
     Extra Space Complexity for operators : o(1)
     Did this code successfully run on Leetcode : NA
