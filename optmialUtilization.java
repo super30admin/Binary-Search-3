@@ -1,7 +1,7 @@
     /*  Explanation
     # Leetcode problem link : https://leetcode.com/discuss/interview-question/341818/Google-or-Onsite-or-Skip-Iterator
-    Time Complexity for operators : o(n^n) .. n is the length of the string
-    Extra Space Complexity for operators : o(n) for (List<String> path) without recursive stack
+    Time Complexity for operators : o(nlogn) .. n is the length of the string
+    Extra Space Complexity for operators : o(1)
     Did this code successfully run on Leetcode : NA
     Any problem you faced while coding this : No
 # Your code here along with comments explaining your approach
@@ -9,11 +9,12 @@
         # Optimized approach: 
                               
             # 1. 
-                    A) Used HashMap to keep track of skipped elements.
-                    B) Before returning any element, checked if it is part of hashmap or not if not then return and increase 
-                       the counter.
-                    C) If it part of it then remove or decrease the counter from hashmap of that element and increase the counter to 
-                       return the next element from the arary or iterator.
+                    A) First sort the backward array on the basis of value. (mlogm)
+                    B) Then iterate thru the first array and calculate the target that we have to find in the second array.
+                    C) Apply binary search on the second array with target and second array to find the element.
+                    D) Once we have index of element, get the  sum and check if it is greater than max. Need to maintain max.
+                    E) if sum>max then create new arraylist and add then elemnts into it.
+                    F) At the end, return list.
     */  
 import java.util.*;
 class Solution  {
