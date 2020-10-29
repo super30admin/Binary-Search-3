@@ -1,5 +1,5 @@
 """
-Problem: Implement pow(x, n), which calculates x raised to the power n (i.e. x^n)
+Problem: 50. Implement pow(x, n), which calculates x raised to the power n (i.e. x^n)
 Leetcode: https://leetcode.com/problems/powx-n/
 
 Approach:
@@ -8,8 +8,8 @@ Approach:
     - For odd n, x^n = x^n/2 * x^n/2 * x
     - If n is negative, change x to 1/x and negative n to positive n
 
-Time Complexity: O(n/2) for the recursive calls till n//2
-Space Complexity: O(n/2) recursive stack
+Time Complexity: O(log n) for the recursive calls till n//2
+Space Complexity: O(log n) recursive stack
 
 Did this code successfully run on Leetcode : Yes
 Any problem you faced while coding this : No
