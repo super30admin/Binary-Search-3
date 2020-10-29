@@ -1,7 +1,7 @@
 // Time Complexity: O(log(N))
 // Space Complexity: O(log(N))
 // Passed Leetcode
-class Solution {
+class Problem1 {
     
     public double binarySearch(double x, int n) {
         if (n == 0) {

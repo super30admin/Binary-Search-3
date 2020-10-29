@@ -2,7 +2,7 @@
 // Space Complexity: O(max(log(N), K))
 // Passed Leetcode
 
-import java.lang.*;
+import java.util.*;
 
 class Solution {
     int x;
