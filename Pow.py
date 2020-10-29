@@ -15,7 +15,6 @@ class Solution:
             else:
                 return mid*mid*2
             
-            
         if n<0:
             return 1/helper(x,n)
         else:
