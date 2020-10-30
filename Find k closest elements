@@ -1,0 +1,34 @@
+// time complexity : logn + k
+// space complexity : O(1)
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        
+        //find the closest element to x
+       // Here we find the the element greater or equal to the x
+        int l = 0, r = arr.length-1;
+        while(l < r) {
+            int mid = (l + r)/2;
+            if(arr[mid] >= x) {r = mid;}
+            else if(arr[mid] < x) l = mid+1;
+           }
+        
+  //ensure the range
+    int right = r;
+    int left = r-1;
+    
+    while(k > 0) {
+     if(left < 0 ) right++; // you are cerating right boundary but you got left boundary
+     else if(right == arr.length) left--; // we are creating left boundary; got the right boundary
+     else if(arr[right] - x  < x - arr[left]) right++; // right element is closest -> extension from right
+     else left--;  // extension from left; even if left is smaller or equal to x
+            
+     k--;
+        }
+      //between left and right -> I have k closest elements
+        List<Integer> list =new ArrayList<>();
+        for(int i = left+1; i < right; i++) {
+            list.add(arr[i]);
+        }
+        return list;
+    }
+}
