@@ -3,6 +3,7 @@
 # Approach:- Binary Search the number<=target and use two pointer and a deque to maintain sorted order. Compare left and right pointer values decrement the left
 # pointer if the left pointer value is more closer to the target than the right append left the left value to a queue to maintain sorted order. Otherwise increment right and append right to the queue
 from bisect import bisect_left
+import collections
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         def bs(left,right,x):
