@@ -1,0 +1,16 @@
+# Time - O(log(n-k))
+# Space - O(1)
+# Ran on LC - Yes
+
+# Search space end = len(arr)-k; Condition - find the first element in the range required
+
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+            low, high = 0, len(arr) - k
+            while low < high:
+                first = low + (high - low)//2
+                if x - arr[first] <= arr[first + k] - x:
+                    high = first
+                else:
+                    low = first + 1
+            return arr[low:low + k]
