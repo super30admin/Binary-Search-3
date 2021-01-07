@@ -1,0 +1,26 @@
+//TC: O(logn)
+//SC: O(n/2)--> O(n) ?? 
+
+//Approach: Idea is to use a recursive call stack by reducing the pow/n to half of it's current value until it is 0
+//Edge case: Even & Odd(multiply additionally by 2) && +ve/-ve(1/x)
+
+class Solution {
+    public double myPow(double x, int n) {
+        if(n==0){
+            return 1;
+        }
+        
+        //recursive call stack to reach until lowest possible value
+        double temp = myPow(x,n/2);
+        //even pow  temp * temp
+        //odd pow : temp * temp * x --> 2^3 = 2^1 * 2^1 * 2
+        if(n%2==0){
+            return temp * temp;
+        }else{
+            if(n < 0){
+                return temp * temp * 1/x;
+            }
+            return temp * temp * x;
+        }
+    }
+}
