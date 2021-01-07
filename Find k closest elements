@@ -1,0 +1,30 @@
+//TC: O(n)
+//SC: O(n)-> worst case add all elements of arr
+
+//Approach: Idea is to use two pointer and move them based on absolute difference of currentVal - x;
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> result = new ArrayList<>();
+        
+        int low = 0;
+        int high = arr.length - 1;
+        //low = 0 && high = 4
+        while(high - low >= k){
+            int diff1 = Math.abs(arr[low] - x);
+            int diff2 = Math.abs(arr[high] - x);
+ 
+            if(diff2 >= diff1){
+                high--;
+            }else{  
+                low++;
+            }
+        }
+
+        for(int i = low ; i <= high ; i++){
+            result.add(arr[i]);
+        }
+        
+        return result;
+    }
+}
