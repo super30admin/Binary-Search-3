@@ -1,0 +1,72 @@
+class Solution:
+    
+    # function to find floor of x in the given arr
+    def findfloor(self, arr, x):
+        ans = -1;
+        low, high = 0, len(arr) - 1;
+        while(low <= high):
+            mid = (low + high)//2;
+            if(arr[mid] < x):
+                ans = mid;
+                low = mid + 1;
+            else:
+                high = mid - 1;
+        return ans;
+    
+    # function to find the ceil index of x in the given arr
+    def findceil(self, arr, x):
+        ans = len(arr);
+        low, high = 0, len(arr) - 1;
+        while(low <= high):
+            mid = (low + high)//2;
+            if(arr[mid] >= x):
+                ans = mid;
+                high = mid - 1;
+            else:
+                low = mid + 1;
+        return ans;
+    
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        i, j = self.findfloor(arr, x), self.findceil(arr, x)
+        n = len(arr)
+        
+        # if floor index is -1, return the first k elements of the given input
+        if( i == -1):
+            return arr[:k];
+        # if ceil index is length of the array, return the last k elements
+        if( j == n):
+            return arr[n-k:n];
+        
+        if( i == j):
+            i -= 1;
+            j += 1;
+        # iterate until i and j doesn't cross the left and right boundaries
+        while( i >=0 and j < n and k > 0):
+            # if elt at index i is closer than j, decrement i, else increment j
+            if(abs(arr[i] - x) <= abs(arr[j] - x)):   
+                i -= 1;
+            else:
+                j += 1;
+            # decrement k every time
+            k -= 1;
+        # if any elts left in the right side, pick them from right side
+        if(i == -1 and k > 0):
+            j += k;
+        # if any elts left in the left side, pick them from left side
+        if(j == n and k > 0):
+            i -= k;
+        
+        return arr[i+1: j];
+                
+        
+        '''
+        time complexity = O(logn + k);
+        space complexity = O(1)
+        '''
+            
+        
+        
+            
+        
+        
+        

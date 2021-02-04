@@ -1,0 +1,30 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        
+        status = True;
+        # make the input number positive if the given number is negative
+        if(n<0):
+            status = False;
+            n = -n;
+        # take two variables, nas for storing the final result and base to store the temporary base
+        ans = 1.0; base = x;
+        
+        while(n >= 1):
+            # if n is even, base is multiplied by itself and reduce n to half
+            if(n%2 == 0):
+                base *= base;
+                n //= 2;
+            # if n is even, multiply base with ans and reduce the n by 1
+            else:
+                ans *= base;
+                n -= 1;
+            #print(base, ans)
+        # if the given number is negative, return 1/ans;
+        if(not status):
+            return 1/ans
+        return ans;
+       '''
+       time complexity = O(logn)
+       space complexity = O(n)
+       '''     
+        
