@@ -1,4 +1,4 @@
-# Time Complexity : O(N)  O(n-k+k) -> O(n)
+# Time Complexity : O(N)  O(n-k+k) -> O(n) for TWO POINTER.. O(logN + k) s
 # Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
