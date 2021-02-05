@@ -1,0 +1,30 @@
+//Time Complexity: o(log n)
+//Space Complexity: o(1)
+class Solution {
+    public double myPow(double x, int n) {
+        //if n is negative menas x should be 1/x
+        if(n<0){
+            x = 1/x;
+        }
+        //call helper class
+        return helper(x,n);
+    }
+    
+    private double helper(double x,int n){
+        //base
+        //if n is 0 means x^0 return 1
+        if(n==0)
+            return 1.0;
+        //logic
+        //keep calling helper function for half
+        double half = helper(x,n/2);
+        //if n is even multily half into half 
+        if(n%2 == 0){
+            return half * half;
+        } 
+        //else multiply with half and x
+        else{
+            return half*half*x;
+        }
+    }
+}
