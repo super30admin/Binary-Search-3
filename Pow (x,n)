@@ -1,0 +1,21 @@
+class Solution {
+    public double myPow(double x, int n) {
+        if(n==0)return 1;
+        double res=myPow(x,n/2);
+        if(n%2==0){
+            return res*res;
+        }
+        else {
+            if(n<0){
+                return res*res*1/x;
+            }
+            else {
+                return res*res*x;
+            }
+        }
+    }
+}
+
+// Time complexity: O(log x)
+//Space Complexit: O(1)
+// Approach: Find square each time and reduce the time by half; 
