@@ -1,0 +1,63 @@
+//Time complexity - o(k+log (n)) n is no of elements in array
+//Space complexity - o(1)
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        
+        LinkedList<Integer> result = new LinkedList<>();
+        if(arr == null || arr.length == 0) return result;
+        //do binary search to find the closest min element index;
+        int closestEl = binarySearch(arr,x);
+        //add the element to result
+        result.addFirst(arr[closestEl]);
+        
+        int left = closestEl-1;
+        int right = closestEl+1;
+        
+        //until k is grater thn 1 keep on adding it
+        while(k>1){
+            //if left is less thn zero keep adding right values
+            if(left<0){
+                result.addLast(arr[right++]);
+            }
+            //if right is at the last index add left values 
+            else if (right == arr.length){
+                result.addFirst(arr[left--]);
+            }
+            //add the cloest value and if diff is same thn min index val
+            else {
+                if(Math.abs(x-arr[left]) > Math.abs(arr[right]-x)) {
+                    result.addLast(arr[right++]);
+                } else {
+                    result.addFirst(arr[left--]);
+                }
+            }
+            k--;
+        }
+        return result;
+    }
+    
+    //binary search - o(log n)
+    private int binarySearch(int[] arr,int x) {
+        int l =0, h= arr.length -1;
+        int m=0;
+        
+        while(l<h){
+            m = l+(h-l)/2;
+            //if x and k are same return m index
+            if(arr[m] == x){
+                return m;
+            }
+            //check mid is grater thn x move high to mid else move l to m+1
+            else if(arr[m]<x){
+                l = m+1;
+            } else {
+                h = m;
+            }
+        }
+        //if m at first index return
+        if(m == 0) return m;
+        
+        //else check diff between m and m-1 and return nearest one
+        return Math.abs(arr[m]-x) < Math.abs(arr[m-1]-x)?m: m-1;
+    }
+}
