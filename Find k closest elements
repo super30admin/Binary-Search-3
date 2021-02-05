@@ -1,0 +1,25 @@
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> res= new ArrayList<>();
+        if(arr==null || arr.length==0){
+            return res;
+        }
+        int l=0; int h=arr.length-1;
+        while(h-l+1>k){
+            int distL= Math.abs(x-arr[l]);
+            int distR= Math.abs(x-arr[h]);
+            if(distL>distR){
+                l++;
+            }
+            else h--;
+        }
+        for(int i=l;i<=h;i++){
+                res.add(arr[i]);
+            }
+        return res;
+    }
+}
+
+//Time complexity: O(n-k)
+//Space complexity : O(k)
+//approach: two pointer, increment left if value of right is closer to x and visa versa
