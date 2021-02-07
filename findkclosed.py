@@ -72,19 +72,22 @@ class Solution:
 
         #   move left and right pointers until count is k
         while (cnt < k):
-            if (left >= 0 and right < n):               #   if left and right are in array bounds
-                if (x - arr[left] <= arr[right] - x):   #   if left elem is closer to x compared to right elem
+            # if left and right are in array bounds
+            if (left >= 0 and right < n):
+                # if left elem is closer to x compared to right elem
+                if (x - arr[left] <= arr[right] - x):   
                     left -= 1
-                else:                                   #   if right elem is closer to x compared to left elem
+                 # if right elem is closer to x compared to left elem
+                else:                                  
                     right += 1
-
-            elif (left < 0):                            #   if left elem is out of bounds
+            # if left elem is out of bounds
+            elif (left < 0):                            
                 right += 1
-
-            else:                                       #   if right elem is out of bounds
+            # if right elem is out of bounds
+            else:                                       
                 left -= 1
 
             cnt += 1
 
         return arr[left + 1: right] 
-            +++++
+        
