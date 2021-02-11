@@ -1,13 +1,21 @@
+//Time complexity: O(logn)
+//Space complexity: O(1)
+
 class Solution {
     public double myPow(double x, int n) {
-        long m = n > 0 ? n : -(long)n;
-        double ans = 1.0;
-        while (m != 0) {
-            if ((m & 1) == 1)
-                ans *= x;
-            x *= x;
-            m >>= 1;
+        long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
         }
-        return n >= 0 ? ans : 1 / ans;
+        double ans = 1;
+        double current_product = x;
+        for (long i = N; i > 0; i /= 2) {
+            if ((i % 2) == 1) {
+                ans = ans * current_product;
+            }
+            current_product = current_product * current_product;
+        }
+        return ans;
     }
-}
+};
