@@ -1,0 +1,77 @@
+// Time Complexity :O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this :
+coming up with log n sol
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        LinkedList<Integer> result = new LinkedList<>();
+        
+        if(arr == null || arr.length == 0)
+            return result;
+             
+        
+        int low = 0;
+        int high = arr.length -1;
+        
+        int closest = binarySearch(arr, x);
+        int left = closest -1;
+        int right = closest +1;
+        result.add(arr[closest]);
+        
+        while( k > 1)
+        {
+            if(left < 0)
+                result.addLast(arr[right++]);
+            
+            else if(right == arr.length)
+                result.addFirst(arr[left--]);
+            
+            else
+            {
+                if(x - arr[left] <= arr[right] - x)
+                    result.addFirst(arr[left--]);
+               
+                else
+                    result.addLast(arr[right++]);
+                    
+            }
+            
+            k--;
+        }
+        
+        return result;
+    }
+    
+    private int binarySearch(int[] arr, int x)
+    {
+        int low =0;
+        int high = arr.length -1;
+        
+        while(low < high)
+        {
+            int mid = low + (high-low)/2;
+            
+            if(arr[mid] == x)
+                return mid;
+            
+            else if(arr[mid] < x)
+                low = mid +1;
+            
+            else
+                high = mid;
+        }
+        
+        if(low == 0)
+            return low;
+        
+        if(Math.abs(arr[low] - x) < Math.abs(arr[low-1] - x))
+        {
+            return low;
+        }
+        else
+            return low-1;
+    }
+}
