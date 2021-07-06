@@ -1,3 +1,5 @@
+//divide and conquer, O(logn)
+//O(1) space, O(logn) stack space
 class Solution {
 public:
     double myPow(double x, int n) {
