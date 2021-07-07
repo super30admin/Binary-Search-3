@@ -1,6 +1,7 @@
 //completed p2
 //O(log(N-K)+k) TC
 //O(1) SC
+//binary search to find closest element here
 
 class Solution {
 public:
