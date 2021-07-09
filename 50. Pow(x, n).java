@@ -1,6 +1,7 @@
  public class Solution {
      // Time complexity: O(logN)
      // Space comlexity: O(logN)
+     // we use divide and conquer as our major strategy
         public double myPow(double x, int m) {
             double temp = x;
             
