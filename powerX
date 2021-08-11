@@ -1,0 +1,21 @@
+class Solution {
+    public double myPow(double x, int n) {
+        //base case
+        if(n == 0) return 1;
+            
+        //logic
+        //reduce the power by half
+        double result =  myPow(x, n/2);
+        if(n%2 == 0){
+            //power is even;
+            return result*result;
+        }
+        else{
+            //if power is odd
+            if(n > 0) return result*result*x;
+            //replace x with 1/x if power is negative
+            else return result*result* 1/x;
+        }
+        
+    }
+}

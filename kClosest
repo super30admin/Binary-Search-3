@@ -1,0 +1,24 @@
+//Time complexity: O(logn)
+//Space complexity: O(1)
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> res = new ArrayList<>();
+            int low = 0;
+            int high = arr.length - k;
+            // Binary search the range
+            while(low < high){
+                int mid = low + (high - low) / 2;
+                int distLow = x - arr[mid];
+                int distHigh = arr[mid+k] - x;
+                //move low to mid if high is closer to x
+                if(distLow > distHigh) low = mid+1;
+                //move high to mid if low is closer to x
+                else high = mid;
+            }
+            //put the range in list and retuen
+            for(int i=low; i<low+k; i++){
+                res.add(arr[i]);
+            }
+            return res;
+    }
+}
