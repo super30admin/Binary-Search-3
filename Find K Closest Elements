@@ -1,0 +1,24 @@
+#Time Complexity:O(log n)
+#Space Complexity:O(1)
+
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        result=[]
+        low=0
+        n=len(arr)
+        high=n-k
+        if(arr==None or n==0):
+            return result
+        while(low<high):
+            mid=low+(high-low)//2
+            dist_start=x-arr[mid]
+            dist_end=arr[mid+k]-x
+            if(dist_start>dist_end):
+                low=mid+1
+            else:
+                high=mid
+        j=0
+        while(j<k):
+            result.append(arr[j+low])
+            j+=1
+        return result
