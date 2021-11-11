@@ -1,0 +1,30 @@
+//Time complexity:- o(logn)
+//space complexity:-0(1)
+//Did it run on leetcode:- yes
+//What problem did you face:- took time for one error case.
+//your code with explanation:-it is a two point approach first pointer will be at index, last pointer will be at last.
+//iterating until high-low>=k if absolute value of arr[low]-x is greater than arr[high]-x incrementing low or decrementing high.
+// from low to high adding to output.
+
+
+
+
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> output=new ArrayList<>();
+        int low=0;
+        int high=arr.length-1;
+        while(high-low>=k){
+            if(Math.abs(arr[low]-x)>Math.abs(arr[high]-x)){
+                low=low+1;
+            }
+            else{
+                high=high-1;
+            }
+        }
+        for(int i=low;i<=high;i++){
+            output.add(arr[i]);
+        }
+   return output; }
+}
