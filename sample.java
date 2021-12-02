@@ -22,20 +22,18 @@ class Solution {
     //o(log(n-k)) time o(1) space
 
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int l = 0; int h = arr.length - k;
+        int low = 0; int high = arr.length - k;
         List<Integer> result = new ArrayList<>();
         if(arr == null || arr.length == 0) return result;
 
-        while(l < h){
-            int mid = l + (h - l)/2;
+        while (low < high){
+            int mid = low + (high - low) / 2;
             int distS = x - arr[mid];
-            int distE = arr[mid + k] - x;
-
-            if(distS > distE){
-                l = mid + 1;
-            }
-            else{
-                h = mid;
+            int distE = arr[mid + k] -x ;
+            if(distS > distE) {
+                low = mid +1;
+            } else{
+                high = mid;
             }
         }
         for (int i = l; i < l + k; i++){
