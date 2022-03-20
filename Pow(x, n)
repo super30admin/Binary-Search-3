@@ -1,0 +1,34 @@
+//TC = O(logn)
+//SC = O(logn)
+class Solution {
+    public double myPow(double x, int n) {
+        
+        long N = n;
+        
+        if(N<0){
+            x = 1/x;
+            N = -N;
+        }
+        
+       return myPowRec(x, N);
+        
+    }
+    
+    private double myPowRec(double x, long n){
+        //base
+        if(n == 0){
+            return 1;
+        }
+        
+        //rec
+        double res = myPowRec(x, n/2);
+        
+        //check odd or even
+        if(n%2 == 0){
+           return res*res; 
+        }
+        else{
+            return res*res*x;
+        }
+    }
+}
