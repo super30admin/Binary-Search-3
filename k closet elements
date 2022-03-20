@@ -1,0 +1,43 @@
+//TC = log(n-k+1)
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        
+        int left = 0, right = arr.length-k;
+        
+        while(left < right){
+            
+            int mid = left + (right-left)/2;
+            
+            int d1 = Math.abs(x - arr[mid]);
+            int d2 = Math.abs(x - arr[mid+k]);
+            
+            if(arr[mid] == arr[mid+k]){   //all are 1s
+                
+                if(arr[mid] < x){
+                    left = mid + 1;
+                }else{
+                    right = mid;
+                }
+            }else if(d1 <= d2){
+                
+                right = mid;
+                
+            }else{
+                
+                left = mid+1;
+                
+            }
+
+        }
+        
+        List<Integer> result = new ArrayList<>();
+        //start of the window
+        for(int i = left; i < left+k; i++){
+            result.add(arr[i]);
+        }
+        
+        return result;
+        
+    }
+}
