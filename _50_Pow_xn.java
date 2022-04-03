@@ -30,3 +30,5 @@ class Solution {
         return  (n%2 != 0) ? temp * temp * x: temp*temp;
     }
 }
+
+//TODO: bit approach
