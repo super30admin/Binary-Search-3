@@ -39,7 +39,7 @@
 func myPow(x float64, n int) float64 {
     if n < 0 {
         x = 1/x
-        n = -n
+        n *= -1
     }
     var helper func(base float64, exp int) float64
     helper = func(base float64, exp int) float64 {
