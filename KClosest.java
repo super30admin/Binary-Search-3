@@ -18,6 +18,10 @@ public class KClosest {
         while(right - left + 1 > k) {
             int distLeft = Math.abs(x - arr[left]);
             int distRight = Math.abs(x - arr[right]);
+
+            //left should be compared first
+                // because of the constraints saying if both are matching then left should get precedence
+                // If we compare right to left first then else block will do left++, which is not correct
             if(distLeft > distRight){
                 left++;
             }else {
