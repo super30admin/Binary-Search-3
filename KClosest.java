@@ -29,7 +29,7 @@ public class KClosest {
             }
         }
 
-        for(int i=left; i < left + k; i++) {
+        for(int i=left; i < right + 1; i++) {
             result.add(arr[i]);
         }
 
