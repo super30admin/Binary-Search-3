@@ -35,4 +35,34 @@ public class KClosest {
 
         return result;
     }
+
+    // Binary search approach
+    // TC: O(log n)
+    //SC: O(1)
+    public List<Integer> findClosestElements2(int[] arr, int k, int x) {
+        if(arr == null || arr.length == 0) return new ArrayList<>();
+
+        List<Integer> result = new ArrayList<>();
+
+        int left = 0;
+        int right = arr.length - k;
+
+        while(left < right) {
+            int mid = left + (right - left) / 2;
+            int distLeft = x - arr[mid];
+            int distRight = arr[mid+k] - x;
+
+            if(distLeft > distRight) {
+                left = mid + 1;
+            }else {
+                right = mid;
+            }
+        }
+
+        for(int i=left; i < left + k; i++) {
+            result.add(arr[i]);
+        }
+
+        return result;
+    }
 }
