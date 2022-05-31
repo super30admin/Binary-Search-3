@@ -1,5 +1,5 @@
-// Time Complexity : O(1)
-// Space Complexity : O(log n) where n is power
+// Time Complexity : O(n)
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 
 // Three line explanation of solution in plain english
