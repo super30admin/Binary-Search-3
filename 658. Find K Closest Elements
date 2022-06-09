@@ -1,0 +1,34 @@
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) 
+    {
+        List<Integer> result = new ArrayList<>();
+        int n = arr.length;
+        int low = 0;
+        int high = n-1;
+        
+        while(high - low + 1 > k)  //O(n-k)
+        {
+            int distL= Math.abs(x-arr[low]);
+            int distH = Math.abs(x-arr[high]);
+            
+            if(distL > distH)
+            {
+                low++;
+            }
+            
+            else
+            {
+                high--;
+            }
+        }
+        
+        for(int i = low;i<=high;i++) //O(K)
+        {
+            result.add(arr[i]);
+        }
+        
+        return result;
+    }
+}
+
+//time : O(n) 
