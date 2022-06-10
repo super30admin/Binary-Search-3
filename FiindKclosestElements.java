@@ -1,4 +1,4 @@
-// Time Complexity : O(logN) + O(k)
+// Time Complexity : O(log(n-k)) + O(k)
 // Space Complexity : O(k)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
