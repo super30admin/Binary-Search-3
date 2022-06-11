@@ -44,16 +44,17 @@ class Solution:
             mid = (high-low)//2 + low
             
             #  chk if this can be the potential start of the range
-            diffStart = abs(x-arr[mid])
-            diffEnd = abs(arr[mid+k]-x) # mid+k because its the end of range
+            diffStart = x-arr[mid]
+            diffEnd = arr[mid+k]-x # mid+k because its the end of range
             
             # compare
-            if diffStart >= diffEnd:
-                # go-towards rhs of the list
-                low = mid+1
+            if diffStart <= diffEnd:
+                # go-towards lhs of the list
+                high = mid
             
             else:
-                high = mid-1
+                # go-towards rhs of the list
+                low = mid+1
             
             continue
         
