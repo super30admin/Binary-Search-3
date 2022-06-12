@@ -1,0 +1,22 @@
+// Time Complexity : O(N)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
+
+import java.util.List;
+import java.util.LinkedList;
+class KClosestElements {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length-1;
+        while(right - left + 1 != k){
+            if(Math.abs(arr[left] - x) > Math.abs(arr[right] - x)) left++;
+            else  right--;
+        }
+        List<Integer> list = new LinkedList<>();
+        for(int i = left; i<= right; i++){
+            list.add(arr[i]);
+        }
+        return list;
+    }
+}
