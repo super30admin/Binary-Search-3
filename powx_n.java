@@ -1,5 +1,5 @@
 //TC: O(logn) ->because power is reduced by half every time
-//SC: O(1)
+//SC: O(logn)
 
 class Solution {
     public double myPow(double x, int n) {
