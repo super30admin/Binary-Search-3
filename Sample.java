@@ -137,3 +137,41 @@ class Solution {
         return result;
     }
 }
+
+//****FIND K-CLOSEST ELEMENTS- TWO POINTERS SOLUTION****
+//Time complexity: o(logn-K);
+//Space complexity:o(1);
+//Leetcode runnable : Y;
+//Any doubts:n;
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int n=arr.length;
+        int low=0;
+        int high=n-k;
+        
+        while(low<high)
+        {
+            int mid=low+(high-low)/2;
+            
+            //Assy=uming mid is the start of the range
+            int distl=x-arr[mid];
+            //Taking one ele extra
+            int disth=arr[mid+k]-x;
+            
+            if(distl>disth)
+            {
+                low=mid+1;
+            }
+            else
+            {
+                high=mid;
+            }
+        }
+        List<Integer> result=new ArrayList<Integer>();
+        for(int i=low;i<low+k;i++)
+        {
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}
