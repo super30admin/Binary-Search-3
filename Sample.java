@@ -153,6 +153,7 @@ class Solution {
         {
             int mid=low+(high-low)/2;
             
+            //Dont take absolute distance it wont work out.
             //Assy=uming mid is the start of the range
             int distl=x-arr[mid];
             //Taking one ele extra
