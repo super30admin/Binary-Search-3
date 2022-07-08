@@ -5,7 +5,8 @@
 #
 #
 #
-
+# modified binary search
+# TC: O(k*log(n-k)); SC: O(k)
 class Solution:
     def findClosestElements(self, arr: list[int], k: int, x: int) -> list[int]:
         start = 0
@@ -22,6 +23,56 @@ class Solution:
 
 
 print(Solution().findClosestElements([1, 2, 3, 4, 5], 4, 3))
+
+
+# binary search.
+# TC: O(log(n)) --> for finding the pivot + O(k) --> for finding k elements.
+# class Solution:
+#     # finding the pivot location of x
+#     def pivot(self, arr, x):
+#         if x < arr[0]:
+#             return 0
+#         if x > arr[-1]:
+#             return len(arr) - 1
+#         start = 0
+#         end = len(arr) - 1
+#         while start <= end:
+#             mid = start + (end - start) // 2
+#             if arr[mid] == x:
+#                 return mid
+#             elif arr[mid] < x:
+#                 start = mid + 1
+#             else:
+#                 end = mid - 1
+#         if abs(x - arr[start]) < abs(x-arr[end]):
+#             return start
+#         else:
+#             return end
+#
+#     def findClosestElements(self, arr, k: int, x: int):
+#         pivot = self.pivot(arr, x)
+#         # base cases
+#         if pivot == 0:
+#             return arr[:k]
+#         if pivot == len(arr) - 1:
+#             return arr[len(arr)-k:]
+#         # setting the left pointer and right pointer.
+#         left = pivot - 1
+#         right = pivot + 1
+#         count = 1  # since we know pivot will be in our list, declare a variable count = 1
+#         # finding the start index of the k-elements.
+#         while count < k:
+#             if right >= len(arr) or abs(x-arr[left]) <= abs(x-arr[right]):
+#                 left -= 1
+#                 count += 1
+#             else:
+#                 right += 1
+#                 count += 1
+#         return arr[(left+1):(left+1+k)]
+#
+#
+# print(Solution().findClosestElements([1, 2, 3, 4, 5], 4, 3))
+
 
 # two-pointers
 # TC: O(n-k); SC: O()
