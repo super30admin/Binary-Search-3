@@ -138,7 +138,7 @@ class Solution {
     }
 }
 
-//****FIND K-CLOSEST ELEMENTS- TWO POINTERS SOLUTION****
+//****FIND K-CLOSEST ELEMENTS- BINARY SEARCH SOLUTION****
 //Time complexity: o(logn-K);
 //Space complexity:o(1);
 //Leetcode runnable : Y;
