@@ -34,7 +34,8 @@ class Solution:
 
 
 # binary search
-# 
+# TC O(log(n-k))
+# SC O(1)
 
 
 class Solution:
