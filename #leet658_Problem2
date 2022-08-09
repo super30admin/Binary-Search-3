@@ -1,0 +1,29 @@
+//TC O(n-k)
+//SC  O(1)
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+       if(arr== null|| arr.length  ==0) return new ArrayList<>();
+        
+        int l = 0;
+        int r = arr.length -1;
+        
+        while((r-l+1)>k)
+        {
+            int distL = x - arr[l];
+            int distR = arr[r] - x;
+            if(distL > distR)
+            {
+                l++;
+                
+            }
+            else
+                r--;
+        }
+        List<Integer> result = new ArrayList<>();
+        for(int i = l; i<= r; i++)
+        {
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}
