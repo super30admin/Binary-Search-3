@@ -1,4 +1,4 @@
-// Time Complexity : O(log(n-k)) where n = number of elements, k = k closest elements
+// Time Complexity : O(log(n-k)) + O(k) where n = number of elements, k = k closest elements
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
@@ -64,7 +64,7 @@ class Solution {
         
         int start = 0, end = arr.length-k;
         
-        while (start < end) {
+        while (start < end) { // O(log(n-k))
             int mid = start + (end-start)/2;
             int sDiff = x - arr[mid];
             int eDiff = arr[mid+k] - x;
@@ -78,7 +78,7 @@ class Solution {
         
         List<Integer> result = new ArrayList<>();
         
-        for (int i = start; i < start+k; i++) {
+        for (int i = start; i < start+k; i++) { // O(k)
             result.add(arr[i]);
         }
         
