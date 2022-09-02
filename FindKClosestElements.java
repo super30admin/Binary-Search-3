@@ -1,4 +1,4 @@
-// Time Complexity : O(logN) where N = given power n
+// Time Complexity : O(log(n-k)) where n = number of elements, k = k closest elements
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
@@ -31,34 +31,56 @@ class Solution {
     	
     	//Time Complexity : O(nlogk) + O(klogk) where n = number of elements, k = number of closest elements
     	// Space Complexity : O(n) where n = number of elements
-        List<Integer> result = new ArrayList<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
+//        List<Integer> result = new ArrayList<>();
+//        HashMap<Integer, Integer> map = new HashMap<>();
+//        
+//        for (int i = 0; i < arr.length; i++) {
+//            map.put(Math.abs(x - arr[i]), i);
+//        }
+//        
+//        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> { // O(nlogk)
+//            if (map.get(b).equals(map.get(a))) {
+//                return b - a;
+//            } else {
+//                return map.get(b) - map.get(a);
+//            }
+//        });
+//        
+//        for (int i = 0; i < arr.length; i++) {
+//            pq.add(i);
+//            
+//            if (pq.size() > k) {
+//                pq.poll();
+//            }
+//        }
+//        
+//        while (!pq.isEmpty()) {
+//            result.add(arr[pq.poll()]);
+//        }
+//        
+//        Collections.sort(result); // O(klogk)
+//        
+//        return result;
         
-        for (int i = 0; i < arr.length; i++) {
-            map.put(Math.abs(x - arr[i]), i);
-        }
+        int start = 0, end = arr.length-k;
         
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> { // O(nlogk)
-            if (map.get(b).equals(map.get(a))) {
-                return b - a;
-            } else {
-                return map.get(b) - map.get(a);
-            }
-        });
-        
-        for (int i = 0; i < arr.length; i++) {
-            pq.add(i);
+        while (start < end) {
+            int mid = start + (end-start)/2;
+            int sDiff = x - arr[mid];
+            int eDiff = arr[mid+k] - x;
             
-            if (pq.size() > k) {
-                pq.poll();
+            if (sDiff > eDiff) {
+                start = mid + 1;
+            } else {
+                end = mid;
             }
         }
         
-        while (!pq.isEmpty()) {
-            result.add(arr[pq.poll()]);
-        }
+        List<Integer> result = new ArrayList<>();
         
-        Collections.sort(result); // O(klogk)
+        for (int i = start; i < start+k; i++) {
+            result.add(arr[i]);
+        }
         
         return result;
     }
