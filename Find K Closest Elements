@@ -1,0 +1,28 @@
+from collections import deque
+from bisect import bisect
+
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        r = bisect(arr, x)
+        l = r - 1
+        res = deque([])
+        
+        while len(res) < k and r < len(arr) and l >= 0:
+            if abs(arr[l]-x) <= abs(arr[r]-x):
+                res.appendleft(arr[l])
+                l -= 1
+            else:
+                res.append(arr[r])
+                r += 1
+        
+        while len(res) < k and r < len(arr):
+            res.append(arr[r])
+            r += 1
+            
+        while len(res) < k and l >= 0:
+            res.appendleft(arr[l])
+
+            
+# Time Complexity: O(n)
+# Space Complexity: O(m)
+# Successfully implemented on Leetcode
