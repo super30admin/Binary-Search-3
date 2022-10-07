@@ -1,0 +1,35 @@
+Pow(x, n)
+#tc: O(logn)
+#sc: O(1)
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1
+        
+        total, val, left = 1, x, abs(n)
+
+        while left > 1:
+            if left % 2 == 0:
+                left = left // 2
+                val = val * val
+            else:
+                total *= val
+                left -= 1
+
+        return total * val if n > 0 else 1 / (total * val)
+        
+        
+        
+  Find K Closest Elements
+  #tc:O(logn)
+  #sc:O(1)
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        l,r=0,len(arr)-k
+        while l<r:
+            m=(l+r)//2
+            if x-arr[m]>arr[m+k]-x:
+                l=m+1
+            else:
+                r=m
+        return arr[l:l+k]               
