@@ -12,7 +12,6 @@ class Solution {
             int d1=x-arr[m];
             int d2=arr[m+k]-x;
             
-            System.out.println(d1+" "+d2);
             if(d1>d2)
             {
                 l=m+1;
@@ -34,7 +33,7 @@ class Solution {
     }
 }
 
-// Time Complexity : O( )
-// Space Complexity : O( )
+// Time Complexity : O(log(N-K))
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
