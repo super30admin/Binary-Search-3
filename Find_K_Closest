@@ -1,0 +1,34 @@
+//TimeComplexity.  O(n)
+//SpaceComplexity. O(1)
+
+class Solution {
+    
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        
+        List<Integer> list = new ArrayList<>();
+
+        int l = arr.length;
+
+        int low = 0;
+        int high = l-1;
+
+        while(high-low+1 > k){
+
+            int distL = Math.abs(arr[low] - x);
+            int distR = Math.abs(arr[high] - x);
+
+            if(distL > distR){
+                low++;
+            }else{
+                high--;
+            }
+
+        }
+
+        for(int i = low; i <= high; i++){
+            list.add(arr[i]);
+        }
+
+        return list;
+    }
+}
