@@ -1,0 +1,32 @@
+//TimeComplexity. logn
+//SpaceComplexity O(1)
+
+
+class Solution {
+    public double myPow(double x, int n) {
+        double result = pow(x, n);
+        if(n  < 0){
+          
+            return 1/result;
+        }else{
+        
+            return result;     
+        }
+        
+     }
+        public double pow(double x, int n){
+       
+        if(n == 0)return 1;
+        if(x == 0) return 0; 
+        int temp = n;
+        double result = 0;
+        if(temp % 2 == 0){
+            return pow(x * x, temp/2);
+        }else{
+            return x * pow(x * x, temp/2);
+        }
+        }
+              
+        
+
+}
