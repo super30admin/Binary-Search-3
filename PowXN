@@ -1,0 +1,30 @@
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+
+/*
+ * here we divide the function into half everytime we need to find the power.
+ * until we reach the base case where n = 0 we return 1.
+ */
+
+ class Solution {
+    public double myPow(double x, int n) {
+    //base
+        if(n == 0){
+            return 1.000;
+        }
+    //logic
+        double result = myPow(x*x, n/2);
+
+        if(n % 2 == 0){ // even
+            return result;
+        }
+        else{ //odd or negative
+            if(n < 0){
+                return 1/x * result;
+            }
+            else{
+                return x * result;
+            }
+        }
+    }
+}
