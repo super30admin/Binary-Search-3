@@ -24,15 +24,21 @@ if the element is not there in the list then we return the element that
 // space : O(1)
 func findClosestElements(arr []int, k int, x int) []int {
 	low := 0
-	high := len(arr) - k - 1
-	for low < high {
-		mid := high + low/2
+	high := len(arr) - k
+	for low <= high {
+		mid := low + (high-low)/2
+		if mid+k >= len(arr) {
+			break
+		}
+		//diffLow := int(math.Abs(float64(x - arr[mid])))
+		//diffHigh := int(math.Abs(float64(arr[mid+k] - x)))
 		diffLow := x - arr[mid]
 		diffHigh := arr[mid+k] - x
-		if diffLow < diffHigh {
-			high = mid
-		} else {
+		if diffLow > diffHigh {
 			low = mid + 1
+
+		} else {
+			high = mid - 1
 		}
 	}
 	return arr[low : low+k]
