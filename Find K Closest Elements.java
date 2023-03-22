@@ -2,7 +2,8 @@ class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> result = new ArrayList<Integer>();
         
-        
+        //Time: 
+		//Space:
         if (arr.length == k) {
             for (int i = 0; i < k; i++) {
                 result.add(arr[i]);

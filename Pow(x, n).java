@@ -1,5 +1,5 @@
 class Solution {
-	//O(Time): log n
+	//O(Time): log n; since only the log n number of calls are conducted
 	//O(Space): log n
     public double myPow(double x, int n) {
         //This is a good question for practicing recursion.
