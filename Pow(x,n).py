@@ -17,3 +17,4 @@ class Solution:
             else:
                 return (result * result * 1 / x)
 
+
