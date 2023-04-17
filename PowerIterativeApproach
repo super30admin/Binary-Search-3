@@ -1,0 +1,20 @@
+//time complexity : O(logn)
+//space complexity: O(1)
+//iterative solution
+class PowerIterativeApproach {
+    public double myPow(double x, int n) {
+        if(n<0){
+            x= 1/x;
+            n=n*-1;
+        }
+        double result= 1.00;
+        while(n!=0){
+            if(n%2!=0){
+                result =x*result;
+            }
+            x=x*x;
+            n=n/2;
+        }
+        return result;
+    }
+}
