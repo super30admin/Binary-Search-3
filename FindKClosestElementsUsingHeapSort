@@ -1,0 +1,35 @@
+//time complexity: O(nlogk)
+//space complexity: O(n)
+class  FindKClosestElementsUsingHeapSort{
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i<arr.length;i++){
+            map.put(arr[i], Math.abs(x-arr[i]));
+
+        }
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>((a,b)->
+        {
+            int disA= map.get(a);
+            int disB= map.get(b);
+            if(disA==disB){
+                return b-a;
+            }
+            return disB-disA;
+        });
+
+        for(int i=0; i<arr.length;i++){
+              queue.add(arr[i]);
+            if(queue.size()>k){
+               queue.poll();  
+            }
+           
+        }
+        List<Integer> result = new ArrayList<>();
+        while(!queue.isEmpty()){
+           result.add(queue.poll());
+        }
+        Collections.sort(result);
+        return result;
+    }
+}
