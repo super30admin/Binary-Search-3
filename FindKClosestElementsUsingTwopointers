@@ -1,0 +1,28 @@
+//time complexity: O(n)
+//space complexity: O(k)
+class FindKClosestElementsUsingTwopointers {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+     int n= arr.length-1;
+     int start=0;
+     int end=n;
+
+     while(end-start+1>k){
+         int distEnd= Math.abs(x-arr[end]);
+         int distStart= Math.abs(x-arr[start]);
+         if(distStart<=distEnd){
+             
+             end--;
+         }
+         else{
+             start++;
+         }
+     }
+        List<Integer> result= new ArrayList<>();
+         for(int i=start;i<=end; i++){
+            result.add(arr[i]);
+         }
+  
+     
+       return result;
+    }
+}
