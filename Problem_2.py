@@ -16,6 +16,36 @@ then hovering over the substring using the pointers and appending numbers to the
 
 # Find K Closest Elements
 
+# Approach - 1
+# Binary Search
+
+class Solution(object):
+    def findClosestElements(self, arr, k, x):
+        """
+        :type arr: List[int]
+        :type k: int
+        :type x: int
+        :rtype: List[int]
+        """
+        low=0
+        high=len(arr)-k
+        while low<high:
+            mid=low+(high-low)/2
+            distS=x-arr[mid]
+            distE=arr[mid+k]-x
+            if distS>distE:
+                low=mid+1
+            else:
+                high=mid
+        result=[]
+        for i in range(low,low+k):
+            result.append(arr[i])
+        return result
+
+
+# Approach - 2
+# Two Pointers
+
 class Solution(object):
     def findClosestElements(self, arr, k, x):
         """
