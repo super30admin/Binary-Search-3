@@ -8,17 +8,18 @@ Any problem you faced while coding this : No
 class Solution {
 public:
     double myPow(double x, int n) {
-        if(n==0) 
-            return 1;
-        double temp = myPow(x,n/2);
-        if(n%2==0){
-            return temp*temp;
+        if(n<0)
+        {
+            x=1/x;
+            n = abs(n);
         }
-        else{
-            if(n<0) 
-                return temp*temp*(1/x);
-            else
-                return temp*temp*x;
+        double res = 1.0;
+        while (n!=0) {
+            if (n%2!=0) 
+                res = res * x;
+            x = x * x;
+            n /= 2;
         }
+        return res;
     }
 };
