@@ -27,9 +27,21 @@ public:
             }
         }
 
-        /* more intuitive solution:
-
-        
+        /* 
+	more intuitive solution:
+	if(dist_s > dist_e)
+ 		l = mid`+ 1;
+   	else if(dist_s < dist_e)
+    		h = mid;
+      	else
+       {
+	if(arr[mid]>=x)
+ 		h = mid;
+   	else if(arr[mid+k]<=x)
+    		l = mid + 1;
+      	else if(arr[mid]<x && arr[mid+k]>x)
+       		h = mid;
+       }
         
         */
 
