@@ -1,0 +1,45 @@
+//50. Pow(x, n)
+//TC=log(n) SC=O(1) iterative solution
+class Solution {
+    public double myPow(double x, int n) {
+        //base
+        if(n<0){
+            x=1/x;
+            n=n * (-1);
+        }
+        //logic
+    double result=1.0;
+    while(n!=0){
+        if(n%2!=0){
+            result=result*x;
+        }
+        x=x*x;
+        n=n/2;
+    }
+    return result;
+
+
+    }
+}
+
+
+/*//TC=log(n) SC=log(n)recursive solution
+class Solution {
+    public double myPow(double x, int n) {
+        //base
+        if(n==0)return 1;
+        //logic
+        double temp=myPow(x,n/2); //recursive call. half the power in each call
+        if(n%2==0){    //check if power is even or odd
+            return temp*temp;
+        }else{
+            if(n<0){
+               return temp*temp*(1/x);c//check if n is negative
+            }else{
+               return temp*temp*x;
+            }
+
+        }
+    }
+}
+*/
