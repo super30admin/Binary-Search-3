@@ -1,17 +1,22 @@
-// TC=O(log n)
-
 class Solution {
-    public double myPow(double x, int n) {
-        //base case
-        if(n==0) return 1;
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> result= new ArrayList<>();
         
-        //logic
-        double result= myPow(x,n/2);
-        if(n%2 ==0){
-            return result *result;
-        }else{
-            if(n>0) return result *result*x;
-            else return result *result*(1/x);
+        int low=0;
+        int high= arr.length-1;
+        
+        while(high-low+1 >k){
+            int distR= Math.abs(arr[high]-x);
+            int distL= Math.abs(arr[low]-x);
+            
+            if(distR>= distL)
+                high--;
+            else low++;
         }
+        
+        for(int i=low;i<=high;i++)
+            result.add(arr[i]);
+        
+        return result;
     }
 }
