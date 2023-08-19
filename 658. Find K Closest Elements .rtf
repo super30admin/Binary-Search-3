@@ -1,0 +1,32 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red25\green25\blue25;}
+{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;}
+\margl1440\margr1440\vieww28600\viewh15260\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+class Solution:\
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:\
+        result = []\
+        n = len(arr)\
+        if x < arr[0]:\
+            return arr[:k]\
+        if x > arr[n - 1]:\
+            return arr[abs(n - k):]\
+        l = 0\
+        h = n - 1\
+        while h - l + 1 > k:\
+            lowdif = abs(x - arr[l])\
+            highdiff = abs(x - arr[h])\
+            \
+            if lowdif > highdiff:\
+                l += 1\
+            else:\
+                h -= 1\
+        \
+        for i in range(l, h + 1):\
+            result.append(arr[i])\
+        return result\
+        }
