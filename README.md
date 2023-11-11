@@ -1,4 +1,5 @@
 # Binary-Search-3
+# https://github.com/super30admin/Binary-Search-3
 
 ## Problem1 
 Pow(x,n) (https://leetcode.com/problems/powx-n/)
