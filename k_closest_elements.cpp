@@ -11,7 +11,7 @@ public:
         priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> pq(comp); // num, distance
         for(int i=0;i<arr.size();i++){
             int dist = abs(arr[i]-x);
-            pq.push({arr[i], dist});
+            pq.push({arr[i], dist}); //nlogk
             if(pq.size()>k){
                 pq.pop();
             }
@@ -22,7 +22,7 @@ public:
         result.push_back(popped.first);
         pq.pop();
     }
-    sort(result.begin(), result.end());
+    sort(result.begin(), result.end()); //klogk
     return result;
     }
 };
