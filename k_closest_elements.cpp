@@ -1,3 +1,31 @@
+//time - O(log(n-k)
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        int low = 0;
+        int high = arr.size()-k;
+        while(low<high){
+            int mid = low+(high-low)/2;
+            int start_dist = x-arr[mid];
+            int end_dist = arr[mid+k]-x;
+            if(start_dist > end_dist){
+                low = mid+1;
+            }
+            else{
+                high = mid;
+            }
+        }
+        vector<int> result;
+        for(int i=low;i<low+k;i++){
+            result.push_back(arr[i]);
+        }
+    return result;
+        
+    }
+};
+
+
+
 class Solution {
 public: 
       vector<int> findClosestElements(vector<int>& arr, int k, int x) {
