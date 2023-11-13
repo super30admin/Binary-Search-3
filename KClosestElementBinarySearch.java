@@ -1,3 +1,13 @@
+// # Binary-Search-3
+
+// ## Problem1 
+// K Closest Elements (https://leetcode.com/problems/find-k-closest-elements/)
+
+// Time Complexity : O(log n)
+// Space Complexity : O(k)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no.
+
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         // using binary search
