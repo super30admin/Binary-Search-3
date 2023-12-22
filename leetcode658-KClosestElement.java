@@ -35,3 +35,45 @@ class Solution {
         return result;
     }
 }
+
+
+/* approach -2 *Min heap solution
+pq size is k
+We're using Max heap
+TC: O(N) + O(N log k) + O(k)+ K log k :(traversing+ heapify + Queue+ copy to array list+ and sort)
+*/
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+     //Min Heap solution
+        
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> { //0 num, 1 dist
+            if(a[1] == b[1])
+            {
+                return b[0]-a[0];
+            }else
+                return b[1] - a[1];
+        });
+        
+        //pq size is k!
+        for(int n : arr)
+        {
+            int[] temp = new int[]{n, Math.abs(n - x)};
+            pq.add(temp);
+            
+            if(pq.size() > k)
+            {
+                pq.poll();
+            }
+        }
+        
+        List<Integer> result = new ArrayList<>();
+        while(!pq.isEmpty())
+        {
+            result.add(pq.poll()[0]);
+        }
+        Collections.sort(result);
+        return result;
+        
+    }
+}
