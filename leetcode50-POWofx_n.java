@@ -47,3 +47,67 @@ class Solution {
 		
 	}
 }
+//same recursive approach different way - C# solution
+public class Solution {
+    public double MyPow(double x, int n) {
+        if(x ==0) return 0;
+        if(n ==0) return 1;
+        
+        double answer = MyPow(x, n/2);
+        
+        if(n <0)
+            x = 1/x;
+        
+        if(n%2 ==0)
+            return answer*answer;
+        else
+            return answer*answer*x;
+            
+    }
+}
+
+/*************************************************************************/
+//Approach-2 Java
+/*
+Iterative
+1. if n is odd, we collected result = result*x
+else we just do n=n/2 and x = x*x
+
+tc: O(logn)
+sc: o(1)*/
+
+//approach
+//calculate in iterative fashion
+//when power is odd, collect the result = result*temp
+//else keep going., with even power, when reach to 0th power, collect result. 
+//every step, n will increase in power of 2!
+
+public class Solution {
+    public double MyPow(double x, int n) { //2, -5
+     
+        double result =1.0;
+        
+       // if( n == 0) return 1;
+        
+        if(n<0)
+          {
+            //n = -n; // we dont need this as anyway we are just checking N is not zero!
+            x = 1/x;
+        }
+        
+        while(n != 0) //if we write while(n > 0) we may get integer overflow error; ex: 2.00000 //-2147483648
+
+        {
+            //check if odd power
+            if(n%2 != 0)
+                result *= x;
+            
+                n=n/2;
+                x=x*x;
+            
+        }
+        return result;
+    }
+}
+
+
