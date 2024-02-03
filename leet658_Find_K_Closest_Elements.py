@@ -2,8 +2,10 @@
 
 # // Time Complexity : Modified Binary Search Approach -> O(log(n-k))
 #                      Two Pointer Approach: O(N)
+#                      Priority Queue Approach: O(nlog(k))
 # // Space Complexity : Modified Binary Search Approach -> O(1)
 #                       Two Pointer Approach: O(1)
+#                       Priority Queue Approach: O(k)
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : None
 
@@ -19,24 +21,44 @@
 # Two Pointer Approach: start from first and last of the array, keep checking the distance of each element with X. Whichever is
 # bigger move that closer to center. We can do this till the difference between low and high is greater or equal to K. Once
 # distance becomes less than k, we have the range and we can take result from that
+# 
+# Priority Queue Approach: Since we know we need K closest elements, that means if we have distances of each element with X, 
+# we need K elements with K smallest distances from X. This will give K closest elements
 
-
+from queue import PriorityQueue
 def findClosestElements(arr, k, x):
-    # Two pointer approach(O(n))
-    low = 0
-    high = len(arr)-1
+    # Heaps/Priority Queue Approach
+    pq = PriorityQueue(k+1)
+    count = 1
 
-    while abs(low-high) >= k:
-        if abs(arr[low]-x) > abs(arr[high]-x):
-            low += 1
-        else:
-            high -= 1
-
+    for i in range(len(arr)):
+        pq.put((-abs(arr[i]-x),-count,i))
+        count += 1
+        if pq.qsize() > k:
+            pq.get()
+    
     result = []
-    for i in range(low,low+k):
-        result.append(arr[i])
+    while pq.qsize() != 0:
+        result.append(arr[pq.get()[2]])
+    
+    result.sort()
+    return result
 
-    return result 
+    # Two pointer approach(O(n))
+    # low = 0
+    # high = len(arr)-1
+
+    # while abs(low-high) >= k:
+    #     if abs(arr[low]-x) > abs(arr[high]-x):
+    #         low += 1
+    #     else:
+    #         high -= 1
+
+    # result = []
+    # for i in range(low,low+k):
+    #     result.append(arr[i])
+
+    # return result 
     # Below is the best solution
     # low = 0
     # high = len(arr)-k
