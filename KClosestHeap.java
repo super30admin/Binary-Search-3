@@ -19,7 +19,7 @@ public class KClosestHeap {
             });
 
             for (int i = 0; i < arr.length; i++) {
-                maxHeap.add(i);
+                maxHeap.add(i); // Add index to heap
                 if (maxHeap.size() > k) {
                     maxHeap.poll();
                 }
@@ -29,7 +29,7 @@ public class KClosestHeap {
                 closestElementsList.add(arr[maxHeap.poll()]);
             }
 
-            Collections.sort(closestElementsList);
+            Collections.sort(closestElementsList); // Elements in queue are Unsorted(based on distance)
 
             return closestElementsList;
         }
