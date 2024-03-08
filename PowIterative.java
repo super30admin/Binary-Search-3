@@ -7,11 +7,11 @@ public class PowIterative {
             double result = 1.0;
 
             if (n < 0) {
-                n = n * (-1);
+                // n = n * (-1); //Module handles negative values
                 x = 1 / x;
             }
 
-            while (n != 0) { // n>0 fails for -2147483648 -> No such positive value
+            while (n != 0) { // n>0 fails for -2147483648 if n is changed to positive -> No such positive value
                 if (n % 2 != 0) {
                     result = result * x;
                 }
