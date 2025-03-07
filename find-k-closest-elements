@@ -1,0 +1,139 @@
+// Time Complexity :O(n-k)-> we are itterating over the nok elements 
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach: two pointers approach take two pointers and calculating the difference between those two pointers which ever the difference is greater moveing that point till the difference between two pointers k
+
+//two pointers
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length - 1;
+        List<Integer> result = new ArrayList<>();
+        if (right == 0) {
+            result.add(arr[0]);
+            return result;
+        }
+        while ((right - left) >= k) {
+            int leftDiff = Math.abs(arr[left] - x);
+            int rightDiff = Math.abs(arr[right] - x);
+            if (leftDiff > rightDiff) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        for (int i = left; i <= right; i++) {
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}
+
+// Time Complexity :O(nlogk)-> we are itterating over the nok elements 
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:take priorityqueue of array type where i store element and distance between k as max heap where my heap size becomes greater than k polling the elemenets and then added k elements into the list and sort them.
+
+//Priority queue as type array (elemement ,distance between x)
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int n = arr.length;
+        List<Integer> result = new ArrayList<>();
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> { //O(k)
+            if (b[1] == a[1]) {
+                return b[0] - a[0];
+            }
+            return b[1] - a[1];
+        });
+        for (int i = 0; i < n; i++) { //O(n)
+            int diff = Math.abs(arr[i] - x);
+            pq.add(new int[] { arr[i], diff });
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+
+        while (!pq.isEmpty()) {
+            int[] re = pq.poll();
+            result.add(re[0]);
+        }
+        Collections.sort(result);
+        return result;
+    }
+}
+
+// Time Complexity :O(nlogk)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach: same approach as mentioned above bu here used priority queue of elements only while in comparator queue calculated diff and return correspondingly
+
+//Priority queue as type Inetegr (elemement)
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int n = arr.length;
+        List<Integer> result = new ArrayList<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> { //O(k)
+         int diffFirst = Math.abs(a - x);
+         int diffSecond = Math.abs(b - x);
+            if (diffFirst == diffSecond) {
+                return b - a;
+            }
+            return diffSecond -diffFirst;
+        });
+        for (int i = 0; i < n; i++) { //O(n)
+           
+            pq.add(arr[i]);
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+
+        while (!pq.isEmpty()) {
+            int re = pq.poll();
+            result.add(re);
+        }
+        Collections.sort(result);
+        return result;
+    }
+}
+
+// Time Complexity :O(log(n-k))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach: done binary search on from starting 0 to array.length-k
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int low = 0;
+        int high = arr.length - k;
+        List<Integer> result = new ArrayList<>();
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            int diffStart = x - arr[mid];
+            int diffEnd = arr[mid + k] - x;
+            if (diffStart > diffEnd) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        for (int i = low; i < low + k; i++) {
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}

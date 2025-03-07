@@ -1,0 +1,91 @@
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach: ran for loop for n time if  get n as negative then i am making x as 1/x and n as postive by uisng Math.abs
+
+class Solution {
+    public double myPow(double x, int n) {
+        double result = 1;
+        if (n < 0) { // -ve case checking
+            if (n == Integer.MIN_VALUE) {
+                n = n + 2;
+            }
+            n = Math.abs(n);
+            x = 1 / x;
+        }
+        for (int i = 0; i < n; i++) { // O(n)
+            result = result * x;
+        }
+        return result;
+    }
+}
+
+// Time Complexity :O(n/2) =>always we are reducing n/  by half;
+// Space Complexity :O(n/2)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:
+
+//recursion
+class Solution {
+    double result = 1;
+
+    public double myPow(double x, int n) {
+        if (n < 0) {
+            if (n == Integer.MIN_VALUE) {
+                n = n + 2;
+            }
+            n = -n;
+            x = 1 / x;
+        }
+        if (n == 0)
+            return 1.0;
+        result = myPow(x, n / 2);
+        if (n % 2 != 0) {
+            result = result * result * x;
+        } else {
+            result = result * result;
+        }
+        return result;
+    }
+}
+
+
+// Time Complexity :O(n/2)-> always we are reducing n/  by half;
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:itterative approach where n becomes odd so adding result to x;
+
+class Solution {
+    double result = 1;
+
+    public double myPow(double x, int n) {
+        if (n < 0) {
+            if (n == Integer.MIN_VALUE) {
+                n = n + 2;
+            }
+            n = -n;
+            x = 1 / x;
+        }
+        while(n != 0 ){
+            System.out.println("before x "+x+" n "+n+" re "+result);
+
+           if(n%2 != 0){
+                result=result*x;
+            }
+              System.out.println("after x "+x+" n "+n+" re "+result);
+
+            x=x*x;
+            n=n/2;
+        }
+         return result;
+    }
+}
