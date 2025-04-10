@@ -1,0 +1,73 @@
+## Problem1 
+class Solution {
+
+   public double myPow(double x, int n) {
+
+     if(n==0){
+
+         return 1.0;
+
+     }
+
+     if(n<0){
+
+         if(n==Integer.MIN_VALUE){
+
+             n+=2;
+
+         }
+
+         x=1/x;
+
+         n=-n;
+
+     }
+
+      return (n%2==0)? myPow(x*x,n/2):x*myPow(x*x,n/2); 
+
+   }
+
+}
+
+## Problem2 
+class Solution {
+
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+
+        int n = arr.length;
+
+        int left = 0; int right = n -1;
+
+        while(right - left >= k){
+
+            int distL = Math.abs(arr[left] - x);
+
+            int distR = Math.abs(arr[right] - x);
+
+            if(distL > distR){
+
+                left++;
+
+            } else{
+
+                right--;
+
+            }
+
+        }
+
+        List<Integer> result = new ArrayList<>();
+
+        for(int i = left; i <= right; i++){
+
+            result.add(arr[i]);
+
+        }
+
+        return result;
+
+        
+
+    }
+
+}
