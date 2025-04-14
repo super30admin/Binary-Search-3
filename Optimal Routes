@@ -1,0 +1,45 @@
+Approach 1 : Two pointer Approach (Arrays already sorted)
+Time Complexity : nlogn+mlogm+(m+n)
+Space Complexity : O(1)
+from collections import defaultdict
+class Solution(object):
+    def optimalFlightPath(self, maxTravelDist, forwardRouteList, returnRouteList):
+        
+        diffDist = []
+        
+        fList = sorted(forwardRouteList)
+        rList = sorted(returnRouteList)
+        left=0
+        right=len(rList)-1
+        lmax=float('+inf')
+        while left<=right:
+            dist = fList[left][1] + rList[right][1]
+            if dist <=maxTravelDist :
+                if dist<lmax:
+                    lmax=dist
+                    diffDist.append((fList[left][0],rList[right][0]))
+                    left+=1
+                elif (dist==lmax):
+                    diffDist[:]=[]
+                    diffDist.append((fList[left][0],rList[right][0]))
+                else:
+                    right-=1
+            else:
+                right-= 1
+        
+        return diffDist[:]
+    
+obj = Solution()
+maxTravelDist=7000
+forwardRouteList=[[1,2000],[2,4000],[3,6000]]
+returnRouteList=[[1,2000],[2,3000]]
+ans = obj.optimalFlightPath(maxTravelDist, forwardRouteList, returnRouteList)
+print(ans) 
+
+Approach 2: Closest Binary Search on a bigger array , so it would end up in log .
+Time Complexity : mlogn or n logm
+Space Complexity :O(1)
+
+Approach 3: Brute Force Solution , Two for loops
+Time Complexity : m*n
+Space Complexity : O(1)
