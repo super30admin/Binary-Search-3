@@ -18,8 +18,9 @@ class Solution {
 
         while (low<high) {
             mid = low + (high-low)/2;
+            // we are not taking abs 
             int distLS = x - arr[mid];
-            int distRS = arr[mid+k] -x;
+            int distRS = arr[mid+k] -x; // mid + k to make sure we are confident while sliding the window one side
             if(distLS<=distRS)
                 high = mid;
             else
@@ -57,7 +58,7 @@ class Solution {
         return result;
     }
 
-    // Heap : O(n)
+    // Heap : O(n log k + k log k)
     // Add elements to a max heap based on its distance from x
     // remove top elements till the last k elements remain
     // sort the last 4 elements based on element value
