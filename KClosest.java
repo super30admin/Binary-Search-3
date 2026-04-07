@@ -1,34 +1,27 @@
+// ran succussfully on leetcode: yes
 class Solution {
+    // space: O(1)
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int l = 0;
-        int r = arr.length - 1;
         List<Integer> ans = new ArrayList<>();
-        // Time Complexity: O(logn)
-        while (l < r) {
-            int mid = l + (r - l) / 2;
-            if (arr[mid] >= x) {
-                r = mid;
-            } else {
-                l = mid + 1;
+        int n = arr.length;
+
+        int low = 0, high = n - k;
+
+        // Time: O(logn)
+        while(low < high){
+            int mid = low + (high - low)/2;
+
+            int distS = x - arr[mid];
+            int distE = arr[mid + k] - x;
+
+            if(distS > distE){
+                low = mid + 1;
+            }else{
+                high = mid;
             }
         }
-        l--;
-        // Time Complexity: O(k)
-        while (r - l - 1< k) {
-            if (l >= 0 && r < arr.length) {
-                if (Math.abs(arr[l] - x) > Math.abs(arr[r] - x)) {
-                    r++;
-                } else {
-                    l--;
-                }
-            } else if (l >= 0) {
-                l--;
-            } else {
-                r++;
-            }
-        }
-        // Time Complexity: O(k)
-        for (int i = l + 1; i < r; i++) {
+        // Time: O(k)
+        for(int i=low; i< low+k; i++){
             ans.add(arr[i]);
         }
 
