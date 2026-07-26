@@ -1,0 +1,48 @@
+//problem1
+class Solution {
+    public double myPow(double x, int n) {
+        double re=1.0;
+        if(n<0){
+            x=1/x;
+        }
+        while(n!=0){
+            if(n%2!=0){
+                re=re*x;
+            }
+            x=x*x;
+            n=n/2;
+        }
+        return re;
+    }
+}
+//problem2
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> res=new ArrayList<>();
+        int n=arr.length;
+        int left=0,right=n-1;
+        while(left<right){
+            int mid=left+(right-left)/2;
+            if(arr[mid]<x){
+                left=mid+1;
+            }else{
+                right=mid;
+            }
+        }
+        left=right-1;
+        while(k>0){
+            if(left<0){
+                right++;
+            }else if(right>=arr.length||Math.abs(arr[left]-x)<=Math.abs(arr[right]-x)){
+                left--;
+            }else{
+                right++;
+            }
+            k--;
+        }
+        for(int i=left+1;i<right;i++){
+            res.add(arr[i]);
+        }
+        return res;
+    }
+}
